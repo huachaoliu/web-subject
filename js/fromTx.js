@@ -50,7 +50,7 @@
  * function test = () {
  *  var a = 0;
  *  return function () {
- *    return ++a;
+ *     a += 1;
  *  }
  * }
  * 
@@ -65,7 +65,7 @@
  *  console.log(this.name);
  * } 
  * const jack = {
- *  name": 'jack'
+ *  name: 'jack'
  * }
  * 
  * const sam = {
