@@ -70,7 +70,6 @@ function rs2Array(rs) {
 function rs2MultiHash(rs, key) {
 	// 请在此实现函数：
 	const result = {};
-	const result = {};
 	const { h, d } = rs;
 	const range = [];							
 	for (let i = 0; i < d.length; i++) {
