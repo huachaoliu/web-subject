@@ -136,21 +136,20 @@
 function calc2LargeIntegerSum(a, b) {
   const a1 = [...a].reverse();
   const b1 = [...b].reverse();
-  const alen = a.length;
-  const blen = b.length;
   const arr = [];
   let temp = 0;
   let c = '';
 
-  function transformNun(n) {
+  function nan2Zero(n) {
     return isNaN(parseInt(n)) ? 0 : parseInt(n);
   }
-  
-  const len = alen > blen ? alen : blen;
+
+  const len = a.length > b.length ? a.length : b.length;
+
   for (let i = 0; i < len; i++) {
-    temp = transformNun(a1[i]) + transformNun(b1[i]);
+    temp = nan2Zero(a1[i]) + nan2Zero(b1[i]);
     const calc = c.split(':');
-    if (transformNun(calc[0]) === i) {
+    if (nan2Zero(calc[0]) === i) {
       temp += 1;
     }
     if (temp > 9) {
