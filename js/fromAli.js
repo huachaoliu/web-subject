@@ -10,8 +10,8 @@
  * ps: 队列规则指数组的一些操作方法，如: push,pop,unshif,shif
  * ps: 有字数限制，使用三目运算符
 */
-
-a.length ? a.shift() : a.push(1) || a.length === 0 ? a.push(1) : a.shift();
+const a = [];
+a.length === 0 ? a.push(1) : a.shift();
 
 /**
  * 1.下面代码会输出什么
@@ -63,8 +63,7 @@ var arr = new Array(100).join(',').split(',').map((item, index) => index);
  * ps: sort方法，random产生随机数
 */
 
-var sortArr = new Array(10).join(',').split(',').map((item, index) => index + 1),
-  sign = 1;
+var sortArr = new Array(10).join(',').split(',').map((item, index) => index + 1);
 sortArr.sort((a, b) => {
   return Math.random() - 0.5;
 });
@@ -99,7 +98,7 @@ console.log(sum);
 /**
  * 我们在跟后端进行异步请求时，很容易陷入嵌套太深的陷阱
  * ps: 该题可能是说的是回调地狱 使用promise 或 async await
-*/ 
+*/
 
 /**
  * 请写一个正则表达式匹配所有二级域名是9game.cn和其他目录下的网址
