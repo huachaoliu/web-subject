@@ -146,7 +146,7 @@ function calc2LargeIntegerSum(a, b) {
 
   const len = a.length > b.length ? a.length : b.length;
 
-  for (let i = 0; i < len; i++) {
+  for (let i = 0; i < len + 1; i++) {
     temp = nan2Zero(a1[i]) + nan2Zero(b1[i]);
     const calc = c.split(':');
     if (nan2Zero(calc[0]) === i) {
