@@ -158,7 +158,7 @@ function calc2LargeIntegerSum(a, b) {
     }
     arr.push(temp);
   }
-  return arr.reverse().join('');
+  return parseInt(arr.reverse().join(''));
 }
 
 console.log(calc2LargeIntegerSum('1234', '456'));
