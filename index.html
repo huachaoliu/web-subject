@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		/* 期望结果为:
+		{
+			"shanghai": [
+				{id: 100, name: "wang", region: "shanghai"},
+				{id: 103, name: "li", region: "shanghai"}
+			],
+			"beijing": [
+				{id: 101, name: "huang", region: "beijing"},
+				{id: 102, name: "zhang", region: "beijing"}
+			]
+		}
+		*/
+		function rs2MultiHash(rs, key) {
+			// 请在此实现函数：regin
+			const result = {};
+			const { h, d } = rs;
+			console.log(h);
+			console.log(d);
+			return result;
+		}
+
+		//////// 以下为测试程序，请勿修改或删除
+
+		function rs2Array(rs) {
+			// 请在此实现函数：
+			const arr = [];
+			const { h, d } = rs;
+			for (let i = 0; i < d.length; i++) {
+				const obj = {};
+				for (let j = 0; j < h.length; j++) {
+					obj[h[j]] = d[i][j];
+				}
+				arr.push(obj);
+			}
+			return arr;
+		}
+
+		var rs = {
+			h: ["id", "name", "region"],
+			d: [
+				[100, "wang", "shanghai"],
+				[101, "huang", "beijing"],
+				[102, "zhang", "beijing"],
+				[103, "li", "shanghai"],
+			]
+		};
+
+		var ret;
+		ret = rs2Array(rs);
+		document.write("<pre>" + JSON.stringify(ret) + "</pre>");
+		/* 期望结果为:
+		[
+			{id: 100, name: "wang", region: "shanghai"},
+			{id: 101, name: "huang", region: "beijing"},
+			{id: 102, name: "zhang", region: "beijing"},
+			{id: 103, name: "li", region: "shanghai"}
+		]
+		*/
+
+		ret = rs2MultiHash(rs, "id");
+		document.write("<pre>" + JSON.stringify(ret) + "</pre>");
+
+
+		ret = rs2MultiHash(rs, "region");
+		document.write("<pre>" + JSON.stringify(ret) + "</pre>");
+
+	</script>
+</body>
+
+</html>

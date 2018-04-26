@@ -71,15 +71,6 @@ function rs2MultiHash(rs, key) {
 	// 请在此实现函数：
 	const result = {};
 	const { h, d } = rs;
-	// for (let i = 0; i < h.length; i++) {
-	// 	const obj = {};
-	// 	for (let j = 0; j < d[i].length; j++) {
-	// 		obj[h[j]] = d[i][j];
-	// 		if (h[j] === key) {
-	// 			result[obj[key]] = [obj];
-	// 		}
-	// 	}
-	// }
 	for (let i = 0; i < d.length; i++) {
 		const obj = {};
 		const ret = [];

@@ -119,35 +119,50 @@
 
 /**
  * 实现超出整数存储范围的两个大正整数之和
-*/
+ * ps: 
+ *  将两个字符串逆序逐个相加
+ *  但如果相加的结果大于9,则需要进位
+ *  '1234' + '456' 
+ *  |   　|   |   |
+ *  4   　3   2   1
+ *  +   　+   +   +
+ *  6   　5   4   ?0 
+ *  [10] [8] [6] [1] 进1
+ *  [0]  [9] [6] [1] 
+ *  
+ *  result = '0961'.reverse()
+ */
 
 function calc2LargeIntegerSum(a, b) {
   const a1 = [...a].reverse();
-  const a2 = [...b].reverse();
-  const l1 = a1.length;
-  const l2 = a2.length;
+  const b1 = [...b].reverse();
+  const alen = a.length;
+  const blen = b.length;
   const arr = [];
-  if (l1 > l2) {
-    for (let i = 0; i < l1; i++) {
-      if (a2[i]) {
-        arr.push(+a1[i] + (+a2[i]));
-      } else {
-        arr.push(a1[i]);
-      }
-    }   
-  } else {
-    for (let i = 0; i < l2; i++) {
-      if (a1[i]) {
-        arr.push(+a1[i] + (+a2[i]));
-      } else {
-        arr.push(a2[i]);
-      }
+  let temp = 0;
+  let c = '';
+
+  function transformNun(n) {
+    return isNaN(parseInt(n)) ? 0 : parseInt(n);
+  }
+  
+  const len = alen > blen ? alen : blen;
+  for (let i = 0; i < len; i++) {
+    temp = transformNun(a1[i]) + transformNun(b1[i]);
+    const calc = c.split(':');
+    if (transformNun(calc[0]) === i) {
+      temp += 1;
     }
+    if (temp > 9) {
+      temp = 0;
+      c = `${i + 1}:1`;
+    }
+    arr.push(temp);
   }
   return arr.reverse().join('');
 }
 
-console.log(calc2LargeIntegerSum('1234', '234'));
+console.log(calc2LargeIntegerSum('1234', '456'));
 
 /**
  * 页面内有一个input输入框，实现在数组arr查询命中词并和autocomplte效果。
@@ -157,12 +172,12 @@ console.log(calc2LargeIntegerSum('1234', '234'));
  */
 
 const arr = ['jack', 'mark', 'jonh', 'serie'];
-function search (e) {
+function search(e) {
   const ev = e || window.event;
   for (let i = 0; i < arr.length; i++) {
     if (~arr[i].indexOf(ev.target.value)) {
       ev.target.value = arr[i];
       break;
-    }    
+    }
   }
 }

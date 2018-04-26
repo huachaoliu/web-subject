@@ -66,8 +66,7 @@ var arr = new Array(100).join(',').split(',').map((item, index) => index);
 var sortArr = new Array(10).join(',').split(',').map((item, index) => index + 1),
   sign = 1;
 sortArr.sort((a, b) => {
-  sign = (Math.random() > 0.5) ? 1 : -1;
-  return (a - b) * sign;
+  return Math.random() - 0.5;
 });
 
 /**
