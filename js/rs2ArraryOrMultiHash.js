@@ -70,17 +70,27 @@ function rs2Array(rs) {
 function rs2MultiHash(rs, key) {
 	// 请在此实现函数：
 	const result = {};
+	const result = {};
 	const { h, d } = rs;
+	const range = [];							
 	for (let i = 0; i < d.length; i++) {
 		const obj = {};
-		const ret = [];
-		for (let j = 0; j < h.length; j++) {
+		for (let j = 0; j < d[i].length; j++) {
 			obj[h[j]] = d[i][j];
-			if (h[j] === key) {
-				ret.push(obj);
-			}
 		}
-		result[obj[key]] = ret;
+		range.push(obj);
+	}
+	const ret = {};
+	for (let k = 0; k < range.length; k++) {
+		if (ret[range[k][key]]) {
+			ret[range[k][key]] += 1;
+			const cache = result[range[k][key]];
+			cache.push(range[k]);
+			result[range[k][key]] = cache;
+		} else {
+			ret[range[k][key]] = 1;
+			result[range[k][key]] = [range[k]];					
+		}
 	}
 	return result;	
 }
